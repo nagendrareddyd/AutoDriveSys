@@ -12,25 +12,27 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var user_service_1 = require("../services/user.service");
-var LoginComponent = (function () {
-    function LoginComponent(usersvc, router) {
-        this.usersvc = usersvc;
+var AuthGuard = (function () {
+    function AuthGuard(router, userSvc) {
         this.router = router;
+        this.userSvc = userSvc;
+        console.log('Auth service');
     }
-    LoginComponent.prototype.login = function () {
-        this.usersvc.login(this.email, this.password);
-        if (this.usersvc.userLoggedIn) {
-            this.router.navigate(['/dashboard']);
-        }
+    AuthGuard.prototype.canActivate = function (route, state) {
+        console.log(this.userSvc.userLoggedIn);
+        if (this.userSvc.userLoggedIn)
+            return true;
+        this.router.navigate(['/login']);
+        return false;
     };
-    return LoginComponent;
+    AuthGuard.prototype.canActivateChild = function () {
+        return true;
+    };
+    return AuthGuard;
 }());
-LoginComponent = __decorate([
-    core_1.Component({
-        templateUrl: 'app/login/login.component.html',
-        styleUrls: ['app/login/login.component.css']
-    }),
-    __metadata("design:paramtypes", [user_service_1.UserService, router_1.Router])
-], LoginComponent);
-exports.LoginComponent = LoginComponent;
-//# sourceMappingURL=login.component.js.map
+AuthGuard = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [router_1.Router, user_service_1.UserService])
+], AuthGuard);
+exports.AuthGuard = AuthGuard;
+//# sourceMappingURL=auth-guard.service.js.map

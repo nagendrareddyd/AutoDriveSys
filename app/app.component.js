@@ -15,7 +15,7 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'pm-app',
-        template: "\n        <router-outlet></router-outlet>\n    "
+        templateUrl: 'app/app.component.html'
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;
