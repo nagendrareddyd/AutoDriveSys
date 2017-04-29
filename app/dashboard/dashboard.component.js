@@ -12,25 +12,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var user_service_1 = require("../services/user.service");
-var LoginComponent = (function () {
-    function LoginComponent(usersvc, router) {
-        this.usersvc = usersvc;
+var DashboardComponent = (function () {
+    function DashboardComponent(userSvc, router) {
+        this.userSvc = userSvc;
         this.router = router;
     }
-    LoginComponent.prototype.login = function () {
-        this.usersvc.login(this.email, this.password);
-        if (this.usersvc.userLoggedIn) {
-            this.router.navigate(['/dashboard']);
-        }
+    DashboardComponent.prototype.logout = function () {
+        this.userSvc.logout();
+        this.router.navigate(['/login']);
     };
-    return LoginComponent;
+    return DashboardComponent;
 }());
-LoginComponent = __decorate([
+DashboardComponent = __decorate([
     core_1.Component({
-        templateUrl: 'app/login/login.component.html',
-        styleUrls: ['app/login/login.component.css']
+        templateUrl: 'app/dashboard/dashboard.component.html'
     }),
     __metadata("design:paramtypes", [user_service_1.UserService, router_1.Router])
-], LoginComponent);
-exports.LoginComponent = LoginComponent;
-//# sourceMappingURL=login.component.js.map
+], DashboardComponent);
+exports.DashboardComponent = DashboardComponent;
+//# sourceMappingURL=dashboard.component.js.map

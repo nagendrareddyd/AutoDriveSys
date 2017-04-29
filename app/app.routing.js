@@ -10,6 +10,8 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var login_component_1 = require("./login/login.component");
 var error_component_1 = require("./error/error.component");
+var dashboard_component_1 = require("./dashboard/dashboard.component");
+var auth_guard_service_1 = require("./services/auth-guard.service");
 var AppRoutingModule = (function () {
     function AppRoutingModule() {
     }
@@ -20,12 +22,16 @@ AppRoutingModule = __decorate([
         imports: [
             router_1.RouterModule.forRoot([
                 { path: 'login', component: login_component_1.LoginComponent },
+                { path: 'dashboard', component: dashboard_component_1.DashboardComponent, canActivate: [auth_guard_service_1.AuthGuard] },
                 { path: '', redirectTo: 'login', pathMatch: 'full' },
                 { path: '**', component: error_component_1.ErrorComponent }
             ])
         ],
         exports: [
             router_1.RouterModule
+        ],
+        providers: [
+            auth_guard_service_1.AuthGuard
         ]
     })
 ], AppRoutingModule);
