@@ -11,23 +11,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var user_service_1 = require("../services/user.service");
+var login_service_1 = require("../../services/login.service");
 var DashboardComponent = (function () {
     function DashboardComponent(userSvc, router) {
         this.userSvc = userSvc;
         this.router = router;
     }
-    DashboardComponent.prototype.logout = function () {
-        this.userSvc.logout();
-        this.router.navigate(['/login']);
-    };
     return DashboardComponent;
 }());
 DashboardComponent = __decorate([
     core_1.Component({
-        templateUrl: 'app/dashboard/dashboard.component.html'
+        templateUrl: 'app/users/dashboard/dashboard.component.html'
     }),
-    __metadata("design:paramtypes", [user_service_1.UserService, router_1.Router])
+    __metadata("design:paramtypes", [login_service_1.LoginService, router_1.Router])
 ], DashboardComponent);
 exports.DashboardComponent = DashboardComponent;
 //# sourceMappingURL=dashboard.component.js.map

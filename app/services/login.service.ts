@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseListObservable, AuthProviders, AuthMethods  } from 'angularfire2'
 
 @Injectable()
-export class UserService { 
+export class LoginService { 
     userLoggedIn: boolean = false;
     loggedInUser: string;
     authUser: any;

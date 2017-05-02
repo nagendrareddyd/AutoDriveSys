@@ -11,26 +11,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var login_service_1 = require("../services/login.service");
-var LoginComponent = (function () {
-    function LoginComponent(loginsvc, router) {
-        this.loginsvc = loginsvc;
+var login_service_1 = require("../../services/login.service");
+var UserMenuComponent = (function () {
+    function UserMenuComponent(loginSvc, router) {
+        this.loginSvc = loginSvc;
         this.router = router;
     }
-    LoginComponent.prototype.login = function () {
-        this.loginsvc.login(this.email, this.password);
-        if (this.loginsvc.userLoggedIn) {
-            this.router.navigate(['/user']);
-        }
+    UserMenuComponent.prototype.logout = function () {
+        this.loginSvc.logout();
+        this.router.navigate(['/login']);
     };
-    return LoginComponent;
+    return UserMenuComponent;
 }());
-LoginComponent = __decorate([
+UserMenuComponent = __decorate([
     core_1.Component({
-        templateUrl: 'app/login/login.component.html',
-        styleUrls: ['app/login/login.component.css']
+        templateUrl: 'app/users/userMenu/user-menu.component.html'
     }),
     __metadata("design:paramtypes", [login_service_1.LoginService, router_1.Router])
-], LoginComponent);
-exports.LoginComponent = LoginComponent;
-//# sourceMappingURL=login.component.js.map
+], UserMenuComponent);
+exports.UserMenuComponent = UserMenuComponent;
+//# sourceMappingURL=user-menu.component.js.map

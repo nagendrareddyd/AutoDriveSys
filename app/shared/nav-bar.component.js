@@ -12,25 +12,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var login_service_1 = require("../services/login.service");
-var LoginComponent = (function () {
-    function LoginComponent(loginsvc, router) {
-        this.loginsvc = loginsvc;
+var NavBarComponent = (function () {
+    function NavBarComponent(loginSvc, router) {
+        this.loginSvc = loginSvc;
         this.router = router;
     }
-    LoginComponent.prototype.login = function () {
-        this.loginsvc.login(this.email, this.password);
-        if (this.loginsvc.userLoggedIn) {
-            this.router.navigate(['/user']);
-        }
+    NavBarComponent.prototype.logout = function () {
+        this.loginSvc.logout();
+        this.router.navigate(['/login']);
     };
-    return LoginComponent;
+    return NavBarComponent;
 }());
-LoginComponent = __decorate([
+NavBarComponent = __decorate([
     core_1.Component({
-        templateUrl: 'app/login/login.component.html',
-        styleUrls: ['app/login/login.component.css']
+        templateUrl: 'app/shared/nav-bar.component.html'
     }),
     __metadata("design:paramtypes", [login_service_1.LoginService, router_1.Router])
-], LoginComponent);
-exports.LoginComponent = LoginComponent;
-//# sourceMappingURL=login.component.js.map
+], NavBarComponent);
+exports.NavBarComponent = NavBarComponent;
+//# sourceMappingURL=nav-bar.component.js.map

@@ -11,13 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var angularfire2_1 = require("angularfire2");
-var UserService = (function () {
-    function UserService(af) {
+var LoginService = (function () {
+    function LoginService(af) {
         this.af = af;
         this.userLoggedIn = false;
         console.log('user service');
     }
-    UserService.prototype.login = function (username, password) {
+    LoginService.prototype.login = function (username, password) {
         var _this = this;
         console.log('login');
         this.af.auth.login({
@@ -40,17 +40,17 @@ var UserService = (function () {
             }
         });
     };
-    UserService.prototype.logout = function () {
+    LoginService.prototype.logout = function () {
         console.log('logout');
         this.af.auth.logout();
         this.loggedInUser = null;
         this.userLoggedIn = false;
     };
-    return UserService;
+    return LoginService;
 }());
-UserService = __decorate([
+LoginService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [angularfire2_1.AngularFire])
-], UserService);
-exports.UserService = UserService;
-//# sourceMappingURL=user.service.js.map
+], LoginService);
+exports.LoginService = LoginService;
+//# sourceMappingURL=login.service.js.map
