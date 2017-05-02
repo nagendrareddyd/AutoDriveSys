@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'pm-app',
-    template: `
-        <router-outlet></router-outlet>
-    `
+    templateUrl: 'app/app.component.html'
 })
 export class AppComponent { }
